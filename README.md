@@ -12,6 +12,7 @@ Features
 - Frontend: HTML, CSS, JavaScript
 - UI/UX: Custom styling with scalable components
 - Prototype Hosting: Local development environment
+
 🚀 Vision
 SpotSong is more than a Spotify-style clone—it’s a foundation for building a personalized streaming experience. The project demonstrates how playlists, discovery features, and artist highlights can be integrated into a cohesive platform. Future iterations may include backend integration, user authentication, and real-time streaming.
 
