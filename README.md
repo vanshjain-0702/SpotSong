@@ -8,6 +8,7 @@ Features
 - Search Functionality: Responsive search bar for finding songs and artists
 
 - SpotSong blends functionality with aesthetics. The dark theme paired with bold yellow accents creates a visually appealing interface that feels immersive and user-friendly. Each section—playlists, discovery, podcasts, and artists—is designed to be intuitive and engaging.
+
 🛠️ Tech Stack
 - Frontend: HTML, CSS, JavaScript
 - UI/UX: Custom styling with scalable components
