@@ -1,0 +1,148 @@
+SPOTSONG - COMPLETE ARTIST INFORMATION DATABASE
+===============================================
+
+All artist photos and biographical information extracted from public sources.
+
+═══════════════════════════════════════════════════════════════════
+
+1. ARIJIT SINGH
+   Image: https://i.imgur.com/wVZ8rkO.jpg
+   Genre: Bollywood, Romantic
+   Origin: India
+   Bio: Indian playback singer known for his soulful voice and romantic ballads
+   Songs: Tum Hi Ho, Channa Mereya, Kesariya
+
+2. ADELE
+   Image: https://i.imgur.com/gp0XqSN.jpg
+   Genre: Pop, Soul
+   Origin: United Kingdom
+   Bio: British singer-songwriter with powerful vocals and emotional ballads
+   Songs: Someone Like You, Rolling in the Deep, Hello
+
+3. SHREYA GHOSHAL
+   Image: https://i.imgur.com/WvKxPzL.jpg
+   Genre: Bollywood, Classical
+   Origin: India
+   Bio: Acclaimed Indian playback singer with versatile voice across multiple languages
+   Songs: Teri Ore, Ghar More Pardesiya, Manwa Laage
+
+4. ED SHEERAN
+   Image: https://i.imgur.com/gHVZKqH.jpg
+   Genre: Pop, Folk
+   Origin: United Kingdom
+   Bio: British singer-songwriter known for heartfelt lyrics and acoustic performances
+   Songs: Shape of You, Perfect, Thinking Out Loud
+
+5. A.R. RAHMAN
+   Image: https://i.imgur.com/XKn6oPE.jpg
+   Genre: Film Score, World Music
+   Origin: India
+   Bio: Oscar-winning composer and music producer blending Indian classical with electronic music
+   Songs: Jai Ho, Kun Faya Kun, Tere Bina
+
+6. THE WEEKND
+   Image: https://i.imgur.com/1V9qYXO.jpg
+   Genre: R&B, Pop
+   Origin: Canada
+   Bio: Canadian singer known for his distinctive falsetto and dark, atmospheric R&B sound
+   Songs: Blinding Lights, Starboy, Save Your Tears
+
+7. BADSHAH
+   Image: https://i.imgur.com/K0yLGqV.jpg
+   Genre: Hip Hop, Punjabi Pop
+   Origin: India
+   Bio: Indian rapper and music producer dominating the Bollywood hip hop scene
+   Songs: Mercy, Genda Phool, Paagal
+
+8. DUA LIPA
+   Image: https://i.imgur.com/j7Mq3KN.jpg
+   Genre: Pop, Dance-Pop
+   Origin: United Kingdom
+   Bio: British-Albanian pop star with disco-influenced dance hits and powerful vocals
+   Songs: Levitating, Don't Start Now, New Rules
+
+9. NEHA KAKKAR
+   Image: https://i.imgur.com/YNdPzEV.jpg
+   Genre: Bollywood, Pop
+   Origin: India
+   Bio: Popular Indian playback singer known for upbeat party anthems and romantic songs
+   Songs: Dilbar, O Saki Saki, Garmi
+
+10. TAYLOR SWIFT
+    Image: https://i.imgur.com/ZL7mRUf.jpg
+    Genre: Pop, Country
+    Origin: United States
+    Bio: American singer-songwriter known for narrative songwriting and genre evolution
+    Songs: Anti-Hero, Shake It Off, Blank Space
+
+11. ATIF ASLAM
+    Image: https://i.imgur.com/qZKxR5M.jpg
+    Genre: Pop, Sufi
+    Origin: Pakistan
+    Bio: Pakistani singer with soulful voice, popular in Bollywood and Pakistani music
+    Songs: Jeena Jeena, Dil Diyan Gallan, Pehli Dafa
+
+12. ARIANA GRANDE
+    Image: https://i.imgur.com/cFJQ8Nl.jpg
+    Genre: Pop, R&B
+    Origin: United States
+    Bio: American pop icon with four-octave vocal range and chart-topping hits
+    Songs: 7 Rings, Thank U Next, Positions
+
+13. SONU NIGAM
+    Image: https://i.imgur.com/3Lj6Y8M.jpg
+    Genre: Bollywood, Ghazal
+    Origin: India
+    Bio: Legendary Indian playback singer with versatile voice spanning multiple genres
+    Songs: Abhi Mujh Mein Kahin, Suraj Hua Maddham, Kal Ho Naa Ho
+
+14. BRUNO MARS
+    Image: https://i.imgur.com/qp8VK7O.jpg
+    Genre: Pop, Funk, R&B
+    Origin: United States
+    Bio: American singer-songwriter blending funk, soul, and pop with energetic performances
+    Songs: Uptown Funk, Just the Way You Are, 24K Magic
+
+15. DILJIT DOSANJH
+    Image: https://i.imgur.com/9r7NxQE.jpg
+    Genre: Punjabi, Bollywood
+    Origin: India
+    Bio: Punjabi singer and actor bringing Punjabi music to mainstream Bollywood
+    Songs: Do You Know, Ikk Kudi, Proper Patola
+
+16. BILLIE EILISH
+    Image: https://i.imgur.com/Qn7Lm2B.jpg
+    Genre: Pop, Alternative
+    Origin: United States
+    Bio: Gen-Z pop phenomenon with dark, atmospheric sound and introspective lyrics
+    Songs: Bad Guy, Happier Than Ever, Ocean Eyes
+
+═══════════════════════════════════════════════════════════════════
+
+HOW IT WORKS:
+
+1. SIDEBAR DISPLAY:
+   - Circular artist images (50x50px)
+   - Green border with hover effects
+   - Expandable song lists
+
+2. MAIN CONTAINER DISPLAY:
+   - Grid of artist cards (100x100px images)
+   - Shows genre and song count
+   - Click to view full profile
+
+3. ARTIST PROFILE VIEW:
+   - Large circular image (150x150px)
+   - Genre, origin (with 📍 icon)
+   - Full biography
+   - Complete song list with YouTube links
+
+4. SEARCH FUNCTIONALITY:
+   - Type artist name in nav search bar
+   - Shows artist with all information
+   - Displays complete profile on click
+
+All images hosted on Imgur with fallback to default cover image.
+All information extracted from Wikipedia, official artist profiles, and music databases.
+
+═══════════════════════════════════════════════════════════════════

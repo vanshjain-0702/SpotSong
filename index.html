@@ -1,0 +1,1249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpotSong - Spot Yourself in the World of Music</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li class="back-button" id="backButton" style="display: none;">
+                <i class="fa-solid fa-arrow-left"></i>
+            </li>
+            <li class="brand"><img src="SpotSong.png" alt="SpotSong Logo">SpotSong</li>
+            <li>Home</li>
+            <li>About</li>
+            <li class="search-container">
+                <input type="text" id="searchInput" class="search-bar" placeholder="Search songs, artists...">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                <div class="search-results" id="searchResults"></div>
+            </li>
+            <li id="navPlaylists">
+                <i class="fa-solid fa-list-music"></i> Playlists
+            </li>
+            <li id="loginBtn" class="login-btn">
+                <i class="fa-solid fa-user"></i> <span id="loginText">Login</span>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="login-modal">
+        <div class="login-modal-content">
+            <span class="login-close">&times;</span>
+            <h2><i class="fa-solid fa-user-circle"></i> Welcome to SpotSong</h2>
+            <p class="login-subtitle">Please login to explore the world of music</p>
+            <form id="loginForm">
+                <div class="login-input-group">
+                    <i class="fa-solid fa-user"></i>
+                    <input type="text" id="userName" placeholder="Full Name" required>
+                </div>
+                <div class="login-input-group">
+                    <i class="fa-solid fa-envelope"></i>
+                    <input type="email" id="userEmail" placeholder="Email Address" required>
+                </div>
+                <div class="login-input-group">
+                    <i class="fa-solid fa-phone"></i>
+                    <input type="tel" id="userPhone" placeholder="Phone Number (Optional)">
+                </div>
+                <div class="login-input-group">
+                    <i class="fa-solid fa-calendar"></i>
+                    <input type="date" id="userDOB" placeholder="Date of Birth (Optional)">
+                </div>
+                <button type="submit" class="login-submit-btn">
+                    <i class="fa-solid fa-right-to-bracket"></i> Login
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Login Required Dialog -->
+    <div id="loginRequiredDialog" class="login-required-dialog">
+        <div class="login-required-content">
+            <i class="fa-solid fa-lock fa-3x"></i>
+            <h2>Login Required</h2>
+            <p>Please login to explore and play songs on SpotSong</p>
+            <button id="loginRequiredBtn" class="login-required-btn">
+                <i class="fa-solid fa-user"></i> Login Now
+            </button>
+        </div>
+    </div>
+
+    <div class="main-content-wrapper">
+        <!-- Left Container -->
+        <div class="container-sidebar container-left">
+            <ul>
+                <li class="active">Browse</li>
+                <li>Radio</li>
+                <li>Your Library</li>
+                <li>Create Playlist</li>
+                <li>Liked Songs</li>
+            </ul>
+
+        </div>
+
+        <!-- Central Container -->
+        <div class="container">
+            
+            <!-- Cover Display View (hidden by default) -->
+            <div class="cover-display-view" id="coverDisplayView" style="display: none;">
+                <div class="cover-display-container">
+                    <img id="displayCoverImage" src="" alt="Cover" class="display-cover-image">
+                    <div class="cover-display-info">
+                        <h1 id="displayTitle">Title</h1>
+                        <p id="displayDescription">Description</p>
+                        <button class="btn-cover-play" id="btnCoverPlay">
+                            <i class="fa-solid fa-play"></i> Play on YouTube
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="songlist" id="songlistView">
+                <h1>Spot Yourself in the World of Music</h1>
+                
+                <!-- Recently Played Section -->
+                <div class="recently-played-section" id="recentlyPlayedSection" style="display: none;">
+                    <div class="recently-played-header">
+                        <i class="fa-solid fa-clock-rotate-left"></i>
+                        Recently Played
+                    </div>
+                    <div class="recently-played-grid" id="recentlyPlayedGrid">
+                        <!-- Recently played songs will be dynamically populated -->
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="songItem" data-src="Haseen - RemixBooth.In.mp3">
+                        <p>1.</p>
+                        <img src="haseen%20cover.jpg" alt="cover1" onerror="this.src='cover.jpg'">
+                        <span>Haseen</span>
+                        <span class="timestamp">2:54<i class="fa-2x fa-regular fa-circle-play" style="color:white;"></i></span>
+                    </div>
+                    <div class="songItem" data-src="Djo - End Of Beginning (Official Audio).mp3">
+                        <p>2.</p>
+                        <img src="end%20of%20beginning%20cover.png" alt="cover1" onerror="this.src='cover.jpg'">
+                        <span>end of beginning</span>
+                        <span class="timestamp">2:39<i class="fa-2x fa-regular fa-circle-play" style="color:white;"></i></span>
+                    </div>
+                    <div class="songItem" data-src="Dil Tu Jaan Tu - RemixBooth.In.mp3">
+                        <p>3.</p>
+                        <img src="dil%20tu%20jaan%20tu%20cover.jpg" alt="cover1" onerror="this.src='cover.jpg'">
+                        <span>dil tu jaan tu</span>
+                        <span class="timestamp">3:57<i class="fa-2x fa-regular fa-circle-play" style="color:white;"></i></span>
+                    </div>
+                    <div class="songItem" data-src="Haseen - RemixBooth.In.mp3">
+                        <p>4.</p>
+                        <img src="haseen%20cover.jpg" alt="cover1" onerror="this.src='cover.jpg'">
+                        <span>Haseen</span>
+                        <span class="timestamp">2:54<i class="fa-2x fa-regular fa-circle-play" style="color:white;"></i></span>
+                    </div>
+                </div>
+                
+                <!-- Artists Section in Main Display -->
+                <div class="main-artist-section">
+                    <div class="main-artist-heading">🎤 Featured Artists</div>
+                    <div class="main-artist-grid" id="mainArtistGrid">
+                        <!-- Artist cards will be dynamically populated -->
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Playlist View (hidden by default) -->
+            <div class="playlist-view" id="playlistView" style="display: none;">
+                <div class="playlist-header">
+                    <h1>🎵 My Playlists</h1>
+                    <button class="btn-create-playlist" id="btnCreatePlaylist">
+                        <i class="fa-solid fa-plus"></i> Create New Playlist
+                    </button>
+                </div>
+                
+                <div class="playlists-container" id="playlistsContainer">
+                    <div class="empty-playlists">
+                        <i class="fa-solid fa-music fa-3x"></i>
+                        <p>No playlists yet. Create your first playlist!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Single Playlist Detail View (hidden by default) -->
+            <div class="playlist-detail-view" id="playlistDetailView" style="display: none;">
+                <div class="playlist-detail-header">
+                    <button class="btn-back-to-playlists" id="btnBackToPlaylists">
+                        <i class="fa-solid fa-arrow-left"></i> Back to Playlists
+                    </button>
+                    <div class="playlist-detail-info">
+                        <h1 id="playlistDetailName">Playlist Name</h1>
+                        <p id="playlistDetailDesc">Description</p>
+                        <div class="playlist-detail-stats">
+                            <span id="playlistDetailCount">0 songs</span>
+                            <button class="btn-play-playlist" id="btnPlayPlaylist">
+                                <i class="fa-solid fa-play"></i> Play All
+                            </button>
+                            <button class="btn-delete-playlist" id="btnDeletePlaylist">
+                                <i class="fa-solid fa-trash"></i> Delete
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="playlist-songs-container" id="playlistSongsContainer">
+                    <div class="empty-playlist-songs">
+                        <i class="fa-solid fa-music-note fa-2x"></i>
+                        <p>No songs in this playlist yet.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Radio View (hidden by default) -->
+            <div class="radio-view" id="radioView" style="display: none;">
+                <div class="radio-header">
+                    <h1>📻 FM Radio Stations - India</h1>
+                    <div class="radio-filters">
+                        <button class="radio-filter-btn active" data-filter="all" data-city="">🇮🇳 All India</button>
+                        <button class="radio-filter-btn" data-filter="city" data-city="mumbai">Mumbai</button>
+                        <button class="radio-filter-btn" data-filter="city" data-city="delhi">Delhi</button>
+                        <button class="radio-filter-btn" data-filter="city" data-city="bangalore">Bangalore</button>
+                        <button class="radio-filter-btn" data-filter="city" data-city="kolkata">Kolkata</button>
+                        <button class="radio-filter-btn" data-filter="city" data-city="chennai">Chennai</button>
+                        <button class="radio-filter-btn" data-filter="genre">🎵 By Genre</button>
+                    </div>
+                </div>
+                
+                <!-- Genre Selection (hidden by default) -->
+                <div class="genre-selection" id="genreSelection" style="display: none;">
+                    <select id="genreSelect" class="genre-dropdown">
+                        <option value="">Select Genre</option>
+                        <option value="pop">Pop</option>
+                        <option value="rock">Rock</option>
+                        <option value="jazz">Jazz</option>
+                        <option value="classical">Classical</option>
+                        <option value="news">News</option>
+                        <option value="talk">Talk</option>
+                        <option value="sports">Sports</option>
+                        <option value="electronic">Electronic</option>
+                    </select>
+                </div>
+                
+                <div class="radio-stations-container" id="radioStationsContainer">
+                    <div class="radio-loading">
+                        <i class="fa-solid fa-spinner fa-spin fa-3x" style="color: rgb(0, 255, 136);"></i>
+                        <p>Loading radio stations...</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Artist Profile View (hidden by default) -->
+            <div class="artist-profile-view" id="artistProfileView" style="display: none;">
+                <div class="artist-profile-header">
+                    <img id="artistProfileImage" class="artist-profile-pic" src="" alt="Artist">
+                    <div class="artist-profile-info">
+                        <h1 id="artistProfileName" class="artist-profile-name"></h1>
+                        <p id="artistProfileGenre" class="artist-profile-genre"></p>
+                        <p id="artistProfileOrigin" class="artist-profile-origin"></p>
+                        <p id="artistProfileBio" class="artist-profile-bio"></p>
+                    </div>
+                </div>
+                <div class="artist-profile-content">
+                    <h2 class="artist-songs-heading">🎵 Popular Songs</h2>
+                    <div id="artistProfileSongs" class="artist-profile-songs-list"></div>
+                </div>
+            </div>
+            
+            <!-- Library View (hidden by default) -->
+            <div class="library-view" id="libraryView" style="display: none;">
+                <div class="library-header">
+                    <h1>📚 Your Library</h1>
+                    <div class="library-tabs">
+                        <button class="library-tab active" data-tab="overview">Overview</button>
+                        <button class="library-tab" data-tab="mood">Mood Zones</button>
+                        <button class="library-tab" data-tab="activity">Activities</button>
+                        <button class="library-tab" data-tab="insights">Insights</button>
+                        <button class="library-tab" data-tab="discover">Discover</button>
+                    </div>
+                </div>
+                
+                <!-- Overview Tab -->
+                <div class="library-tab-content active" id="overviewTab">
+                    <div class="library-stats-grid">
+                        <div class="stat-card">
+                            <i class="fa-solid fa-music fa-2x"></i>
+                            <h3 id="totalSongs">0</h3>
+                            <p>Total Songs</p>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fa-solid fa-clock fa-2x"></i>
+                            <h3 id="totalTime">0h 0m</h3>
+                            <p>Total Duration</p>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fa-solid fa-star fa-2x"></i>
+                            <h3 id="favoritesCount">0</h3>
+                            <p>Favorites</p>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fa-solid fa-fire fa-2x"></i>
+                            <h3 id="streakDays">0</h3>
+                            <p>Day Streak</p>
+                        </div>
+                    </div>
+                    
+                    <div class="library-sections">
+                        <div class="library-section">
+                            <h2>🎨 Visual Collections</h2>
+                            <div class="visual-collections-grid">
+                                <div class="collection-card" data-type="color">
+                                    <div class="collection-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                                        <i class="fa-solid fa-palette"></i>
+                                    </div>
+                                    <h3>Color Library</h3>
+                                    <p>Browse by album colors</p>
+                                </div>
+                                <div class="collection-card" data-type="timeline">
+                                    <div class="collection-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                                        <i class="fa-solid fa-timeline"></i>
+                                    </div>
+                                    <h3>Music Timeline</h3>
+                                    <p>Your journey through music</p>
+                                </div>
+                                <div class="collection-card" data-type="decade">
+                                    <div class="collection-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                                        <i class="fa-solid fa-calendar-days"></i>
+                                    </div>
+                                    <h3>Decade Vault</h3>
+                                    <p>Music by era</p>
+                                </div>
+                                <div class="collection-card" data-type="genre-web">
+                                    <div class="collection-icon" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+                                        <i class="fa-solid fa-project-diagram"></i>
+                                    </div>
+                                    <h3>Genre Constellation</h3>
+                                    <p>Explore genre connections</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="library-section">
+                            <h2>🎯 Recently Played</h2>
+                            <div class="recent-songs-list" id="recentSongsList">
+                                <p class="empty-message">No songs played yet</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Mood Zones Tab -->
+                <div class="library-tab-content" id="moodTab">
+                    <!-- Mood Playlist View -->
+                    <div class="mood-playlist-view" id="moodPlaylistView" style="display: none;">
+                        <button class="btn-back-to-moods" id="btnBackToMoods">
+                            <i class="fa-solid fa-arrow-left"></i> Back to Moods
+                        </button>
+                        <div class="mood-playlist-header">
+                            <div class="mood-playlist-icon" id="moodPlaylistIcon">🎵</div>
+                            <div class="mood-playlist-info">
+                                <h2 id="moodPlaylistTitle">Mood Playlist</h2>
+                                <p id="moodPlaylistDescription">Select a song to play</p>
+                                <div class="mood-playlist-stats">
+                                    <span id="moodSongCount">0 songs</span> • 
+                                    <span id="moodMixType">All songs</span>
+                                </div>
+                            </div>
+                            <button class="btn-shuffle-mood" id="btnShuffleMood">
+                                <i class="fa-solid fa-shuffle"></i> Shuffle Play
+                            </button>
+                        </div>
+                        <div class="mood-songs-list" id="moodSongsList">
+                            <!-- Songs will be populated here -->
+                        </div>
+                    </div>
+                    
+                    <!-- Mood Zones Grid -->
+                    <div class="mood-zones-grid" id="moodZonesGrid">
+                        <div class="mood-zone" data-mood="energetic">
+                            <div class="mood-icon">⚡</div>
+                            <h3>Energy Booster</h3>
+                            <p>High-tempo motivational tracks</p>
+                            <button class="btn-mood-browse">Browse Songs</button>
+                        </div>
+                        <div class="mood-zone" data-mood="focus">
+                            <div class="mood-icon">🎯</div>
+                            <h3>Focus Flow</h3>
+                            <p>Music for deep concentration</p>
+                            <button class="btn-mood-browse">Browse Songs</button>
+                        </div>
+                        <div class="mood-zone" data-mood="chill">
+                            <div class="mood-icon">😌</div>
+                            <h3>Chill Vibes</h3>
+                            <p>Relaxing and peaceful tunes</p>
+                            <button class="btn-mood-browse">Browse Songs</button>
+                        </div>
+                        <div class="mood-zone" data-mood="workout">
+                            <div class="mood-icon">💪</div>
+                            <h3>Workout Beats</h3>
+                            <p>BPM-matched for exercise</p>
+                            <button class="btn-mood-browse">Browse Songs</button>
+                        </div>
+                        <div class="mood-zone" data-mood="sleep">
+                            <div class="mood-icon">🌙</div>
+                            <h3>Sleep Sanctuary</h3>
+                            <p>Soothing sounds for rest</p>
+                            <button class="btn-mood-browse">Browse Songs</button>
+                        </div>
+                        <div class="mood-zone" data-mood="happy">
+                            <div class="mood-icon">😊</div>
+                            <h3>Happy Vibes</h3>
+                            <p>Uplifting and joyful songs</p>
+                            <button class="btn-mood-browse">Browse Songs</button>
+                        </div>
+                        <div class="mood-zone" data-mood="romantic">
+                            <div class="mood-icon">💕</div>
+                            <h3>Romantic Mood</h3>
+                            <p>Love songs and ballads</p>
+                            <button class="btn-mood-browse">Browse Songs</button>
+                        </div>
+                        <div class="mood-zone" data-mood="party">
+                            <div class="mood-icon">🎉</div>
+                            <h3>Party Mode</h3>
+                            <p>Social gathering hits</p>
+                            <button class="btn-mood-browse">Browse Songs</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Activity Tab -->
+                <div class="library-tab-content" id="activityTab">
+                    <!-- Activity Playlist View -->
+                    <div class="activity-playlist-view" id="activityPlaylistView" style="display: none;">
+                        <button class="btn-back-to-activities" id="btnBackToActivities">
+                            <i class="fa-solid fa-arrow-left"></i> Back to Activities
+                        </button>
+                        <div class="activity-playlist-header">
+                            <div class="activity-playlist-icon" id="activityPlaylistIcon">🕐</div>
+                            <div class="activity-playlist-info">
+                                <h2 id="activityPlaylistTitle">Activity Playlist</h2>
+                                <p id="activityPlaylistDescription">Perfect for this moment</p>
+                                <div class="activity-playlist-stats">
+                                    <span id="activitySongCount">0 songs</span>
+                                </div>
+                            </div>
+                            <button class="btn-shuffle-activity" id="btnShuffleActivity">
+                                <i class="fa-solid fa-shuffle"></i> Shuffle Play
+                            </button>
+                        </div>
+                        <div class="activity-songs-list" id="activitySongsList">
+                            <!-- Songs will be populated here -->
+                        </div>
+                    </div>
+                    
+                    <div class="activity-sections" id="activitySectionsGrid">
+                        <div class="activity-card" data-activity="time">
+                            <h3>🕐 Time of Day</h3>
+                            <div class="time-slots">
+                                <div class="time-slot" data-time="morning">
+                                    <span class="time-emoji">🌅</span>
+                                    <span>Morning Energizers</span>
+                                </div>
+                                <div class="time-slot" data-time="afternoon">
+                                    <span class="time-emoji">☀️</span>
+                                    <span>Afternoon Focus</span>
+                                </div>
+                                <div class="time-slot" data-time="evening">
+                                    <span class="time-emoji">🌆</span>
+                                    <span>Evening Chill</span>
+                                </div>
+                                <div class="time-slot" data-time="night">
+                                    <span class="time-emoji">🌃</span>
+                                    <span>Night Vibes</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="activity-card" data-activity="weather">
+                            <h3>🌤️ Weather Sync</h3>
+                            <div class="weather-moods">
+                                <div class="weather-mood" data-weather="sunny">
+                                    <span class="weather-emoji">☀️</span>
+                                    <span>Sunny Day Hits</span>
+                                </div>
+                                <div class="weather-mood" data-weather="rainy">
+                                    <span class="weather-emoji">🌧️</span>
+                                    <span>Rainy Day Vibes</span>
+                                </div>
+                                <div class="weather-mood" data-weather="cloudy">
+                                    <span class="weather-emoji">☁️</span>
+                                    <span>Cloudy Mood</span>
+                                </div>
+                                <div class="weather-mood" data-weather="stormy">
+                                    <span class="weather-emoji">⛈️</span>
+                                    <span>Storm Energy</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="activity-card" data-activity="specific">
+                            <h3>🎮 Specific Activities</h3>
+                            <div class="specific-activities">
+                                <button class="activity-btn" data-act="coding">💻 Coding</button>
+                                <button class="activity-btn" data-act="studying">📚 Studying</button>
+                                <button class="activity-btn" data-act="gaming">🎮 Gaming</button>
+                                <button class="activity-btn" data-act="cooking">🍳 Cooking</button>
+                                <button class="activity-btn" data-act="driving">🚗 Driving</button>
+                                <button class="activity-btn" data-act="reading">📖 Reading</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Insights Tab -->
+                <div class="library-tab-content" id="insightsTab">
+                    <div class="insights-grid">
+                        <div class="insight-card">
+                            <h3>🎵 Music DNA</h3>
+                            <div class="dna-chart">
+                                <canvas id="musicDNAChart"></canvas>
+                            </div>
+                            <div class="dna-stats">
+                                <div class="dna-stat">
+                                    <span>Average BPM</span>
+                                    <strong id="avgBPM">120</strong>
+                                </div>
+                                <div class="dna-stat">
+                                    <span>Energy Level</span>
+                                    <strong id="avgEnergy">High</strong>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="insight-card">
+                            <h3>📊 Listening Patterns</h3>
+                            <div class="pattern-heatmap" id="listeningHeatmap">
+                                <div class="heatmap-legend">
+                                    <span>Less</span>
+                                    <div class="legend-gradient"></div>
+                                    <span>More</span>
+                                </div>
+                                <div class="heatmap-grid" id="heatmapGrid"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="insight-card">
+                            <h3>💎 Hidden Gems</h3>
+                            <p class="card-description">Songs you haven't played in a while that deserve attention</p>
+                            <div class="hidden-gems-list" id="hiddenGemsList">
+                                <p class="empty-message">Keep listening to discover hidden gems!</p>
+                            </div>
+                        </div>
+                        
+                        <div class="insight-card">
+                            <h3>🏆 Top Tracks</h3>
+                            <div class="top-tracks-list" id="topTracksList">
+                                <p class="empty-message">Start listening to see your top tracks!</p>
+                            </div>
+                        </div>
+                        
+                        <div class="insight-card">
+                            <h3>🎤 Top Artists</h3>
+                            <div class="top-artists-chart" id="topArtistsChart">
+                                <p class="empty-message">Start listening to see your top artists!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Discover Tab -->
+                <div class="library-tab-content" id="discoverTab">
+                    <div class="discover-sections">
+                        <div class="discover-card">
+                            <div class="discover-header">
+                                <h3>🔍 Sonic Twins</h3>
+                                <p>Songs that sound similar but you never realized</p>
+                            </div>
+                            <div class="sonic-twins-list" id="sonicTwinsList">
+                                <p class="empty-message">Add more songs to find sonic twins!</p>
+                            </div>
+                        </div>
+                        
+                        <div class="discover-card">
+                            <div class="discover-header">
+                                <h3>🎯 Vibe Matcher</h3>
+                                <p>Find perfect music for any situation</p>
+                            </div>
+                            <div class="vibe-matcher-controls">
+                                <div class="vibe-slider">
+                                    <label>Energy Level</label>
+                                    <input type="range" id="energySlider" min="0" max="100" value="50">
+                                    <span id="energyValue">50</span>
+                                </div>
+                                <div class="vibe-slider">
+                                    <label>Mood</label>
+                                    <input type="range" id="moodSlider" min="0" max="100" value="50">
+                                    <span id="moodValue">50</span>
+                                </div>
+                                <button class="btn-find-match">Find Matches</button>
+                            </div>
+                            <div class="vibe-results" id="vibeResults"></div>
+                        </div>
+                        
+                        <div class="discover-card">
+                            <div class="discover-header">
+                                <h3>🎲 Music Discovery</h3>
+                                <p>Challenge yourself to explore new sounds</p>
+                            </div>
+                            <div class="discovery-challenges">
+                                <div class="challenge-item">
+                                    <i class="fa-solid fa-trophy"></i>
+                                    <span>Explore a new genre this week</span>
+                                    <button class="btn-challenge">Start</button>
+                                </div>
+                                <div class="challenge-item">
+                                    <i class="fa-solid fa-star"></i>
+                                    <span>Find 5 hidden gems</span>
+                                    <button class="btn-challenge">Start</button>
+                                </div>
+                                <div class="challenge-item">
+                                    <i class="fa-solid fa-fire"></i>
+                                    <span>7-day listening streak</span>
+                                    <button class="btn-challenge">Start</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="discover-card">
+                            <div class="discover-header">
+                                <h3>📖 Song Stories</h3>
+                                <p>Attach memories and notes to your songs</p>
+                            </div>
+                            <div class="song-diary" id="songDiary">
+                                <button class="btn-add-story">
+                                    <i class="fa-solid fa-plus"></i> Add Story
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Liked Songs View (hidden by default) -->
+            <div class="liked-songs-view" id="likedSongsView" style="display: none;">
+                <div class="liked-songs-header">
+                    <div class="liked-songs-cover">
+                        <div class="liked-songs-gradient">
+                            <i class="fa-solid fa-heart"></i>
+                        </div>
+                    </div>
+                    <div class="liked-songs-info">
+                        <p class="liked-songs-type">PLAYLIST</p>
+                        <h1 class="liked-songs-title">Liked Songs</h1>
+                        <p class="liked-songs-description">
+                            <span id="likedSongsCount">0</span> songs • Created by You
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="liked-songs-actions">
+                    <button class="btn-play-all" id="btnPlayAllLiked">
+                        <i class="fa-solid fa-play"></i> Play All
+                    </button>
+                    <button class="btn-shuffle" id="btnShuffleLiked">
+                        <i class="fa-solid fa-shuffle"></i> Shuffle
+                    </button>
+                </div>
+                
+                <div class="liked-songs-list" id="likedSongsList">
+                    <div class="empty-liked-songs">
+                        <i class="fa-regular fa-heart fa-5x"></i>
+                        <h2>Songs you like will appear here</h2>
+                        <p>Save songs by tapping the heart icon.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Bottom Player Bar -->
+            <div class="bottom">
+                        <label for="myprogressbar"></label>
+                        <input type="range" name="range" id="myprogressbar" min="0" max="100" style="border: 2px ; color:green" ></input>
+                        
+                        <div class="icons">
+                            <!-- Volume Icon (Left) -->
+                            <div class="icon-container">
+                                <i class="fa-solid fa-2x fa-volume-high" style="color: white;"></i>
+                                <div class="icon-popup">
+                                    <i class="fa-solid fa-volume-low" style="color: white;"></i>
+                                    <i class="fa-solid fa-volume-mute" style="color: white;"></i>
+                                </div>
+                            </div>
+
+                            <!-- Previous Icon (Left) -->
+                            <div class="icon-container">
+                                <i class="fa-solid fa-2x fa-redo" style="color: white;"></i>
+                                <div class="icon-popup">
+                                    <i class="fa-solid fa-repeat" style="color: white;"></i>
+                                    <i class="fa-solid fa-repeat-1" style="color: white;"></i>
+                                </div>
+                            </div>
+
+                            <!-- Center Group: Backward, Play, Forward -->
+                            <div class="center-icons-group">
+                                <!-- Backward Icon -->
+                                <div class="icon-container">
+                                    <i class="fa-solid fa-2.5x fa-backward" style="color: white;"></i>
+                                    <div class="icon-popup">
+                                        <i class="fa-solid fa-step-backward" style="color: white;"></i>
+                                        <i class="fa-solid fa-fast-backward" style="color: white;"></i>
+                                    </div>
+                                </div>
+
+                                <!-- Play Icon -->
+                                <div class="icon-container">
+                                    <i class="fa-regular fa-2.5x fa-circle-play" style="color: white;"></i>
+                                    <div class="icon-popup">
+                                        <i class="fa-solid fa-heart" style="color: white;"></i>
+                                    </div>
+                                </div>
+
+                                <!-- Forward Icon -->
+                                <div class="icon-container">
+                                    <i class="fa-solid fa-2.5x fa-forward" style="color: white;"></i>
+                                    <div class="icon-popup">
+                                        <i class="fa-solid fa-step-forward" style="color: white;"></i>
+                                        <i class="fa-solid fa-fast-forward" style="color: white;"></i>
+                                    </div>
+                                    </div>
+                                    <audio id="audioPlayer" preload="metadata" crossorigin="anonymous"></audio>
+                            </div>
+
+                            <!-- Share Icon (Right) -->
+                            <div class="icon-container">
+                                <i class="fa-solid fa-2x fa-share" style="color: white;"></i>
+                                <div class="icon-popup">
+                                    <i class="fa-solid fa-link" style="color: white;"></i>
+                                    <i class="fa-solid fa-download" style="color: white;"></i>
+                                </div>
+                            </div>
+
+                            <!-- Heart Icon (Right) -->
+                            <div class="icon-container">
+                                <i class="fa-solid fa-2x fa-heart" style="color: white;"></i>
+                                <div class="icon-popup">
+                                    <i class="fa-regular fa-heart" style="color: white;"></i>
+                                    <i class="fa-solid fa-heart-crack" style="color: white;"></i>
+                                </div>
+                            </div>
+
+                            <!-- Queue Toggle Icon (Right) -->
+                            <div class="icon-container" id="queueToggle" title="Toggle Queue (Q)">
+                                <i class="fa-solid fa-2x fa-list-ol" style="color: white;"></i>
+                            </div>
+                        </div>
+                    </div>
+        </div>
+
+        <!-- Right Container -->
+         <div class="container-sidebar container-right">
+            <ul>
+                <div class="Suggested-Songs">
+                    
+
+  <h2 id="songsHeading">Suggested Songs</h2>
+
+  <div id="songsDialog" class="dialog">
+    <strong>Song List:</strong>
+    <ul>
+      <li>🎵 Shape of You - Ed Sheeran</li>
+      <li>🎵 Blinding Lights - The Weeknd</li>
+      <li>🎵 Levitating - Dua Lipa</li>
+      <li>🎵 Uptown Funk - Bruno Mars</li>
+    </ul>
+  </div>
+                
+
+</ul>
+
+             <div class="podcast-section">
+  <div class="podcast-heading" id="podcastToggle">🎙️ Podcasts</div>
+  <div class="podcast-slidebar" id="podcastSlidebar">
+    <div class="podcast-item podcast-tech" data-src="Talking Tech says goodbye for now.mp3">
+        <img src="tech%20talk%20cover.jpg" alt="Tech Talk" class="podcast-cover" onerror="this.src='cover.jpg'">
+        <div class="podcast-info">
+            <span class="podcast-title">Tech Talk - Episode 1</span>
+            <span class="podcast-description">Latest in technology and innovation</span>
+        </div>
+        <span class="podcast-play">
+            <i class="fa-2x fa-regular fa-circle-play" style="color:white;"></i>
+        </span>
+    </div>
+    <div class="podcast-item podcast-health" data-src="Alo Health and wellness podcast - episode 3(1).mp3">
+        <img src="health%20podcast%20cover.jpg" alt="Health & Wellness" class="podcast-cover" onerror="this.src='cover.jpg'">
+        <div class="podcast-info">
+            <span class="podcast-title">Health & Wellness - Episode 2</span>
+            <span class="podcast-description">Tips for healthy living and mindfulness</span>
+        </div>
+        <span class="podcast-play">
+            <i class="fa-2x fa-regular fa-circle-play" style="color:white;"></i>
+        </span>
+    </div>
+    
+  </div>
+</div>
+
+<div class="artist-section">
+  <div class="artist-heading" id="artistToggle">🎵 Artists</div>
+  <div class="artist-search-container" id="artistSearchContainer" style="display: none;">
+    <i class="fa-solid fa-magnifying-glass artist-search-icon"></i>
+    <input type="text" id="artistSearchInput" class="artist-search-bar" placeholder="Search artists...">
+  </div>
+  <div class="artist-slidebar" id="artistSlidebar">
+    <div class="artist-item" data-artist="arijit singh" data-genre="Bollywood, Romantic" data-origin="India" data-bio="Indian playback singer known for his soulful voice and romantic ballads">
+      <img src="https://ui-avatars.com/api/?name=Arijit+Singh&size=200&background=00ff88&color=000&bold=true&format=png" alt="Arijit Singh" class="artist-image" onerror="this.src='haseen cover.jpg'">
+      <div class="artist-name">Arijit Singh</div>
+      <div class="artist-songs">
+        <div class="artist-song-item" data-youtube="https://www.youtube.com/watch?v=Umqb9KENgmk">
+          <span class="artist-song-title">♫ Tum Hi Ho</span>
+          <i class="fa-brands fa-youtube artist-song-play"></i>
+        </div>
+        <div class="artist-song-item" data-youtube="https://www.youtube.com/watch?v=bzSTpdcs-EI">
+          <span class="artist-song-title">♫ Channa Mereya</span>
+          <i class="fa-brands fa-youtube artist-song-play"></i>
+        </div>
+        <div class="artist-song-item" data-youtube="https://www.youtube.com/watch?v=vGrMThBihxM">
+          <span class="artist-song-title">♫ Kesariya</span>
+          <i class="fa-brands fa-youtube artist-song-play"></i>
+        </div>
+      </div>
+    </div>
+    <div class="artist-item" data-artist="adele" data-genre="Pop, Soul" data-origin="United Kingdom" data-bio="British singer-songwriter with powerful vocals and emotional ballads">
+      <img src="https://ui-avatars.com/api/?name=Adele&size=200&background=00c8ff&color=fff&bold=true&format=png" alt="Adele" class="artist-image" onerror="this.src='haseen cover.jpg'">
+      <div class="artist-name">Adele</div>
+      <div class="artist-songs">
+        <div class="artist-song-item" data-youtube="https://www.youtube.com/watch?v=hLQl3WQQoQ0">
+          <span class="artist-song-title">♫ Someone Like You</span>
+          <i class="fa-brands fa-youtube artist-song-play"></i>
+        </div>
+        <div class="artist-song-item" data-youtube="https://www.youtube.com/watch?v=rYEDA3JcQqw">
+          <span class="artist-song-title">♫ Rolling in the Deep</span>
+          <i class="fa-brands fa-youtube artist-song-play"></i>
+        </div>
+        <div class="artist-song-item" data-youtube="https://www.youtube.com/watch?v=YQHsXMglC9A">
+          <span class="artist-song-title">♫ Hello</span>
+          <i class="fa-brands fa-youtube artist-song-play"></i>
+        </div>
+      </div>
+    </div>
+    <div class="artist-item" data-artist="shreya ghoshal" data-genre="Bollywood, Classical" data-origin="India" data-bio="Acclaimed Indian playback singer with versatile voice across multiple languages">
+      <img src="https://ui-avatars.com/api/?name=Shreya+Ghoshal&size=200&background=ff69b4&color=fff&bold=true&format=png" alt="Shreya Ghoshal" class="artist-image" onerror="this.src='haseen cover.jpg'">
+      <div class="artist-name">Shreya Ghoshal</div>
+      <div class="artist-songs">
+        <div class="artist-song-item" data-youtube="https://www.youtube.com/watch?v=Gd7E07_LgMk">
+          <span class="artist-song-title">♫ Teri Ore</span>
+          <i class="fa-brands fa-youtube artist-song-play"></i>
+        </div>
+        <div class="artist-song-item" data-youtube="https://www.youtube.com/watch?v=ys3fotfPpFc">
+          <span class="artist-song-title">♫ Ghar More Pardesiya</span>
+          <i class="fa-brands fa-youtube artist-song-play"></i>
+        </div>
+        <div class="artist-song-item" data-youtube="https://www.youtube.com/watch?v=qklE48C28k8">
+          <span class="artist-song-title">♫ Manwa Laage</span>
+          <i class="fa-brands fa-youtube artist-song-play"></i>
+        </div>
+      </div>
+    </div>
+    <div class="artist-item" data-artist="ed sheeran" data-genre="Pop, Folk" data-origin="United Kingdom" data-bio="British singer-songwriter known for heartfelt lyrics and acoustic performances">
+      <img src="https://ui-avatars.com/api/?name=Ed+Sheeran&size=200&background=ff6347&color=fff&bold=true&format=png" alt="Ed Sheeran" class="artist-image" onerror="this.src='haseen cover.jpg'">
+      <div class="artist-name">Ed Sheeran</div>
+      <div class="artist-songs">
+        <div class="artist-song-item" data-youtube="https://www.youtube.com/watch?v=JGwWNGJdvx8">
+          <span class="artist-song-title">♫ Shape of You</span>
+          <i class="fa-brands fa-youtube artist-song-play"></i>
+        </div>
+        <div class="artist-song-item" data-youtube="https://www.youtube.com/watch?v=2Vv-BfVoq4g">
+          <span class="artist-song-title">♫ Perfect</span>
+          <i class="fa-brands fa-youtube artist-song-play"></i>
+        </div>
+        <div class="artist-song-item" data-youtube="https://www.youtube.com/watch?v=lp-EO5I60KA">
+          <span class="artist-song-title">♫ Thinking Out Loud</span>
+          <i class="fa-brands fa-youtube artist-song-play"></i>
+        </div>
+      </div>
+    </div>
+    <div class="artist-item" data-artist="a.r. rahman" data-genre="Film Score, World Music" data-origin="India" data-bio="Oscar-winning composer and music producer blending Indian classical with electronic music">
+      <img src="https://ui-avatars.com/api/?name=AR+Rahman&size=200&background=ffd700&color=000&bold=true&format=png" alt="A.R. Rahman" class="artist-image" onerror="this.src='haseen cover.jpg'">
+      <div class="artist-name">A.R. Rahman</div>
+      <div class="artist-songs">
+        <div class="artist-song-item" data-youtube="https://www.youtube.com/watch?v=qiB98Wbsdlo">
+          <span class="artist-song-title">♫ Jai Ho</span>
+          <i class="fa-brands fa-youtube artist-song-play"></i>
+        </div>
+        <div class="artist-song-item" data-youtube="https://www.youtube.com/watch?v=T94PHkuydcw">
+          <span class="artist-song-title">♫ Kun Faya Kun</span>
+          <i class="fa-brands fa-youtube artist-song-play"></i>
+        </div>
+        <div class="artist-song-item" data-youtube="https://www.youtube.com/watch?v=9JDSGhhiOwI">
+          <span class="artist-song-title">♫ Tere Bina</span>
+          <i class="fa-brands fa-youtube artist-song-play"></i>
+        </div>
+      </div>
+    </div>
+    <div class="artist-item" data-artist="the weeknd" data-genre="R&B, Pop" data-origin="Canada" data-bio="Canadian singer known for his distinctive falsetto and dark, atmospheric R&B sound">
+      <img src="https://ui-avatars.com/api/?name=The+Weeknd&size=200&background=dc143c&color=fff&bold=true&format=png" alt="The Weeknd" class="artist-image" onerror="this.src='haseen cover.jpg'">
+      <div class="artist-name">The Weeknd</div>
+      <div class="artist-songs">
+        <div class="artist-song-item" data-youtube="https://www.youtube.com/watch?v=4NRXx6U8ABQ">
+          <span class="artist-song-title">♫ Blinding Lights</span>
+          <i class="fa-brands fa-youtube artist-song-play"></i>
+        </div>
+        <div class="artist-song-item" data-youtube="https://www.youtube.com/watch?v=34Na4j8AVgA">
+          <span class="artist-song-title">♫ Starboy</span>
+          <i class="fa-brands fa-youtube artist-song-play"></i>
+        </div>
+        <div class="artist-song-item" data-youtube="https://www.youtube.com/watch?v=XXYlFuWEuKI">
+          <span class="artist-song-title">♫ Save Your Tears</span>
+          <i class="fa-brands fa-youtube artist-song-play"></i>
+        </div>
+      </div>
+    </div>
+    <div class="artist-item" data-artist="badshah" data-genre="Hip Hop, Punjabi Pop" data-origin="India" data-bio="Indian rapper and music producer dominating the Bollywood hip hop scene">
+      <img src="https://ui-avatars.com/api/?name=Badshah&size=200&background=8b008b&color=fff&bold=true&format=png" alt="Badshah" class="artist-image" onerror="this.src='haseen cover.jpg'">
+      <div class="artist-name">Badshah</div>
+      <div class="artist-songs">
+        <div class="artist-song-item" data-youtube="https://www.youtube.com/watch?v=p9gNCiGUGxY">
+          <span class="artist-song-title">♫ Mercy</span>
+          <i class="fa-brands fa-youtube artist-song-play"></i>
+        </div>
+        <div class="artist-song-item" data-youtube="https://www.youtube.com/watch?v=KbvYN76AJJ4">
+          <span class="artist-song-title">♫ Genda Phool</span>
+          <i class="fa-brands fa-youtube artist-song-play"></i>
+        </div>
+        <div class="artist-song-item" data-youtube="https://www.youtube.com/watch?v=KbZ-huhRsGE">
+          <span class="artist-song-title">♫ Paagal</span>
+          <i class="fa-brands fa-youtube artist-song-play"></i>
+        </div>
+      </div>
+    </div>
+    <div class="artist-item" data-artist="dua lipa" data-genre="Pop, Dance-Pop" data-origin="United Kingdom" data-bio="British-Albanian pop star with disco-influenced dance hits and powerful vocals">
+      <img src="https://ui-avatars.com/api/?name=Dua+Lipa&size=200&background=ff1493&color=fff&bold=true&format=png" alt="Dua Lipa" class="artist-image" onerror="this.src='haseen cover.jpg'">
+      <div class="artist-name">Dua Lipa</div>
+      <div class="artist-songs">
+        <div class="artist-song-item" data-youtube="https://www.youtube.com/watch?v=TUVcZfQe-Kw">
+          <span class="artist-song-title">♫ Levitating</span>
+          <i class="fa-brands fa-youtube artist-song-play"></i>
+        </div>
+        <div class="artist-song-item" data-youtube="https://www.youtube.com/watch?v=oygrmJFKYZY">
+          <span class="artist-song-title">♫ Don't Start Now</span>
+          <i class="fa-brands fa-youtube artist-song-play"></i>
+        </div>
+        <div class="artist-song-item" data-youtube="https://www.youtube.com/watch?v=k2qgadSvNyU">
+          <span class="artist-song-title">♫ New Rules</span>
+          <i class="fa-brands fa-youtube artist-song-play"></i>
+        </div>
+      </div>
+    </div>
+    <div class="artist-item" data-artist="neha kakkar" data-genre="Bollywood, Pop" data-origin="India" data-bio="Popular Indian playback singer known for upbeat party anthems and romantic songs">
+      <img src="https://ui-avatars.com/api/?name=Neha+Kakkar&size=200&background=ff69b4&color=000&bold=true&format=png" alt="Neha Kakkar" class="artist-image" onerror="this.src='haseen cover.jpg'">
+      <div class="artist-name">Neha Kakkar</div>
+      <div class="artist-songs">
+        <div class="artist-song-item" data-youtube="https://www.youtube.com/watch?v=rIhx2wZ8jnA">
+          <span class="artist-song-title">♫ Dilbar</span>
+          <i class="fa-brands fa-youtube artist-song-play"></i>
+        </div>
+        <div class="artist-song-item" data-youtube="https://www.youtube.com/watch?v=sIzZMJLWiLg">
+          <span class="artist-song-title">♫ O Saki Saki</span>
+          <i class="fa-brands fa-youtube artist-song-play"></i>
+        </div>
+        <div class="artist-song-item" data-youtube="https://www.youtube.com/watch?v=2KCl5ZghYq0">
+          <span class="artist-song-title">♫ Garmi</span>
+          <i class="fa-brands fa-youtube artist-song-play"></i>
+        </div>
+      </div>
+    </div>
+    <div class="artist-item" data-artist="taylor swift" data-genre="Pop, Country" data-origin="United States" data-bio="American singer-songwriter known for narrative songwriting and genre evolution">
+      <img src="https://ui-avatars.com/api/?name=Taylor+Swift&size=200&background=4169e1&color=fff&bold=true&format=png" alt="Taylor Swift" class="artist-image" onerror="this.src='haseen cover.jpg'">
+      <div class="artist-name">Taylor Swift</div>
+      <div class="artist-songs">
+        <div class="artist-song-item" data-youtube="https://www.youtube.com/watch?v=b1kbLwvqugk">
+          <span class="artist-song-title">♫ Anti-Hero</span>
+          <i class="fa-brands fa-youtube artist-song-play"></i>
+        </div>
+        <div class="artist-song-item" data-youtube="https://www.youtube.com/watch?v=nfWlot6h_JM">
+          <span class="artist-song-title">♫ Shake It Off</span>
+          <i class="fa-brands fa-youtube artist-song-play"></i>
+        </div>
+        <div class="artist-song-item" data-youtube="https://www.youtube.com/watch?v=e-ORhEE9VVg">
+          <span class="artist-song-title">♫ Blank Space</span>
+          <i class="fa-brands fa-youtube artist-song-play"></i>
+        </div>
+      </div>
+    </div>
+    <div class="artist-item" data-artist="atif aslam" data-genre="Pop, Sufi" data-origin="Pakistan" data-bio="Pakistani singer with soulful voice, popular in Bollywood and Pakistani music">
+      <img src="https://ui-avatars.com/api/?name=Atif+Aslam&size=200&background=20b2aa&color=fff&bold=true&format=png" alt="Atif Aslam" class="artist-image" onerror="this.src='haseen cover.jpg'">
+      <div class="artist-name">Atif Aslam</div>
+      <div class="artist-songs">
+        <div class="artist-song-item" data-youtube="https://www.youtube.com/watch?v=VyV_FH4N6vE">
+          <span class="artist-song-title">♫ Jeena Jeena</span>
+          <i class="fa-brands fa-youtube artist-song-play"></i>
+        </div>
+        <div class="artist-song-item" data-youtube="https://www.youtube.com/watch?v=dFHw4b85fGM">
+          <span class="artist-song-title">♫ Dil Diyan Gallan</span>
+          <i class="fa-brands fa-youtube artist-song-play"></i>
+        </div>
+        <div class="artist-song-item" data-youtube="https://www.youtube.com/watch?v=x3Udn4Ive5Q">
+          <span class="artist-song-title">♫ Pehli Dafa</span>
+          <i class="fa-brands fa-youtube artist-song-play"></i>
+        </div>
+      </div>
+    </div>
+    <div class="artist-item" data-artist="ariana grande" data-genre="Pop, R&B" data-origin="United States" data-bio="American pop icon with four-octave vocal range and chart-topping hits">
+      <img src="https://ui-avatars.com/api/?name=Ariana+Grande&size=200&background=ff1493&color=fff&bold=true&format=png" alt="Ariana Grande" class="artist-image" onerror="this.src='haseen cover.jpg'">
+      <div class="artist-name">Ariana Grande</div>
+      <div class="artist-songs">
+        <div class="artist-song-item" data-youtube="https://www.youtube.com/watch?v=QYh6mYIJG2Y">
+          <span class="artist-song-title">♫ 7 Rings</span>
+          <i class="fa-brands fa-youtube artist-song-play"></i>
+        </div>
+        <div class="artist-song-item" data-youtube="https://www.youtube.com/watch?v=gl1aHhXnN1k">
+          <span class="artist-song-title">♫ Thank U, Next</span>
+          <i class="fa-brands fa-youtube artist-song-play"></i>
+        </div>
+        <div class="artist-song-item" data-youtube="https://www.youtube.com/watch?v=tcYodQoapMg">
+          <span class="artist-song-title">♫ Positions</span>
+          <i class="fa-brands fa-youtube artist-song-play"></i>
+        </div>
+      </div>
+    </div>
+    <div class="artist-item" data-artist="sonu nigam" data-genre="Bollywood, Ghazal" data-origin="India" data-bio="Legendary Indian playback singer with versatile voice spanning multiple genres">
+      <img src="https://ui-avatars.com/api/?name=Sonu+Nigam&size=200&background=ffa500&color=000&bold=true&format=png" alt="Sonu Nigam" class="artist-image" onerror="this.src='haseen cover.jpg'">
+      <div class="artist-name">Sonu Nigam</div>
+      <div class="artist-songs">
+        <div class="artist-song-item" data-youtube="https://www.youtube.com/watch?v=bzRdJvq42SM">
+          <span class="artist-song-title">♫ Abhi Mujh Mein Kahin</span>
+          <i class="fa-brands fa-youtube artist-song-play"></i>
+        </div>
+        <div class="artist-song-item" data-youtube="https://www.youtube.com/watch?v=1fBzYlINYAI">
+          <span class="artist-song-title">♫ Suraj Hua Maddham</span>
+          <i class="fa-brands fa-youtube artist-song-play"></i>
+        </div>
+        <div class="artist-song-item" data-youtube="https://www.youtube.com/watch?v=vdTKKN77MHs">
+          <span class="artist-song-title">♫ Kal Ho Naa Ho</span>
+          <i class="fa-brands fa-youtube artist-song-play"></i>
+        </div>
+      </div>
+    </div>
+    <div class="artist-item" data-artist="bruno mars" data-genre="Pop, Funk, R&B" data-origin="United States" data-bio="American singer-songwriter blending funk, soul, and pop with energetic performances">
+      <img src="https://ui-avatars.com/api/?name=Bruno+Mars&size=200&background=daa520&color=000&bold=true&format=png" alt="Bruno Mars" class="artist-image" onerror="this.src='haseen cover.jpg'">
+      <div class="artist-name">Bruno Mars</div>
+      <div class="artist-songs">
+        <div class="artist-song-item" data-youtube="https://www.youtube.com/watch?v=OPf0YbXqDm0">
+          <span class="artist-song-title">♫ Uptown Funk</span>
+          <i class="fa-brands fa-youtube artist-song-play"></i>
+        </div>
+        <div class="artist-song-item" data-youtube="https://www.youtube.com/watch?v=LjhCEhWiKXk">
+          <span class="artist-song-title">♫ Just the Way You Are</span>
+          <i class="fa-brands fa-youtube artist-song-play"></i>
+        </div>
+        <div class="artist-song-item" data-youtube="https://www.youtube.com/watch?v=UqyT8IEBkvY">
+          <span class="artist-song-title">♫ 24K Magic</span>
+          <i class="fa-brands fa-youtube artist-song-play"></i>
+        </div>
+      </div>
+    </div>
+    <div class="artist-item" data-artist="diljit dosanjh" data-genre="Punjabi, Bollywood" data-origin="India" data-bio="Punjabi singer and actor bringing Punjabi music to mainstream Bollywood">
+      <img src="https://ui-avatars.com/api/?name=Diljit+Dosanjh&size=200&background=ff8c00&color=000&bold=true&format=png" alt="Diljit Dosanjh" class="artist-image" onerror="this.src='haseen cover.jpg'">
+      <div class="artist-name">Diljit Dosanjh</div>
+      <div class="artist-songs">
+        <div class="artist-song-item" data-youtube="https://www.youtube.com/watch?v=jcgz0GT4YS4">
+          <span class="artist-song-title">♫ Do You Know</span>
+          <i class="fa-brands fa-youtube artist-song-play"></i>
+        </div>
+        <div class="artist-song-item" data-youtube="https://www.youtube.com/watch?v=Bcv4hZfOuCk">
+          <span class="artist-song-title">♫ Ikk Kudi</span>
+          <i class="fa-brands fa-youtube artist-song-play"></i>
+        </div>
+        <div class="artist-song-item" data-youtube="https://www.youtube.com/watch?v=yMJUC-5e1UQ">
+          <span class="artist-song-title">♫ Proper Patola</span>
+          <i class="fa-brands fa-youtube artist-song-play"></i>
+        </div>
+      </div>
+    </div>
+    <div class="artist-item" data-artist="billie eilish" data-genre="Pop, Alternative" data-origin="United States" data-bio="Gen-Z pop phenomenon with dark, atmospheric sound and introspective lyrics">
+      <img src="https://ui-avatars.com/api/?name=Billie+Eilish&size=200&background=32cd32&color=000&bold=true&format=png" alt="Billie Eilish" class="artist-image" onerror="this.src='haseen cover.jpg'">
+      <div class="artist-name">Billie Eilish</div>
+      <div class="artist-songs">
+        <div class="artist-song-item" data-youtube="https://www.youtube.com/watch?v=DyDfgMOUjCI">
+          <span class="artist-song-title">♫ Bad Guy</span>
+          <i class="fa-brands fa-youtube artist-song-play"></i>
+        </div>
+        <div class="artist-song-item" data-youtube="https://www.youtube.com/watch?v=5GJWxDKyk3A">
+          <span class="artist-song-title">♫ Happier Than Ever</span>
+          <i class="fa-brands fa-youtube artist-song-play"></i>
+        </div>
+        <div class="artist-song-item" data-youtube="https://www.youtube.com/watch?v=viimfQi_pUw">
+          <span class="artist-song-title">♫ Ocean Eyes</span>
+          <i class="fa-brands fa-youtube artist-song-play"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+            </ul>
+        </div>
+   
+</div>
+
+    <!-- Create Playlist Modal -->
+    <div class="modal-overlay" id="createPlaylistModal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Create New Playlist</h2>
+                <button class="modal-close">
+                    <i class="fa-solid fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="playlistName">Playlist Name *</label>
+                    <input type="text" id="playlistName" placeholder="e.g., Workout Mix" required>
+                </div>
+                <div class="form-group">
+                    <label for="playlistDescription">Description</label>
+                    <textarea id="playlistDescription" placeholder="Describe your playlist..." rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="playlistMood">Mood</label>
+                    <select id="playlistMood">
+                        <option value="happy">😊 Happy</option>
+                        <option value="sad">😢 Sad</option>
+                        <option value="energetic">⚡ Energetic</option>
+                        <option value="chill">😌 Chill</option>
+                        <option value="romantic">❤️ Romantic</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" onclick="hideCreatePlaylistModal()">Cancel</button>
+                <button class="btn-primary" onclick="submitCreatePlaylist()">Create Playlist</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add to Playlist Modal -->
+    <div class="modal-overlay" id="addToPlaylistModal" style="display: none;">
+        <div class="modal-content modal-small">
+            <div class="modal-header">
+                <h3>Add to Playlist</h3>
+                <button class="modal-close">
+                    <i class="fa-solid fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="playlist-select-list" id="playlistSelectList">
+                    <p>No playlists available. Create one first!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Songs to Specific Playlist Modal -->
+    <div class="modal-overlay" id="addSongsToPlaylistModal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add Songs to <span id="targetPlaylistName">Playlist</span></h3>
+                <button class="modal-close">
+                    <i class="fa-solid fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="add-songs-tabs">
+                    <button class="tab-button active" data-tab="library">Library</button>
+                    <button class="tab-button" data-tab="search">Search</button>
+                    <button class="tab-button" data-tab="youtube">YouTube URL</button>
+                </div>
+                
+                <!-- Library Tab -->
+                <div class="tab-content active" id="libraryTab">
+                    <div class="available-songs-list" id="availableSongsList">
+                        <p style="color: rgba(255,255,255,0.6); text-align: center; padding: 20px;">Loading songs...</p>
+                    </div>
+                </div>
+                
+                <!-- Search Tab -->
+                <div class="tab-content" id="searchTab">
+                    <div class="search-songs-container">
+                        <input type="text" class="search-songs-input" id="searchSongsInput" placeholder="Search for songs, artists...">
+                    </div>
+                    <div class="available-songs-list" id="searchSongsList">
+                        <p style="color: rgba(255,255,255,0.6); text-align: center; padding: 20px;">Type to search...</p>
+                    </div>
+                </div>
+                
+                <!-- YouTube URL Tab -->
+                <div class="tab-content" id="youtubeTab">
+                    <input type="text" class="youtube-url-input" id="youtubeUrlInput" placeholder="Paste YouTube URL here...">
+                    <input type="text" class="song-name-input" id="songNameInput" placeholder="Song name (optional)">
+                    <button class="btn-primary" onclick="addYouTubeSongToPlaylist()" style="width: 100%;">
+                        <i class="fa-solid fa-plus"></i> Add YouTube Song
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Queue Panel -->
+    <div class="queue-panel" id="queuePanel">
+        <div class="queue-header">
+            <h2><i class="fa-solid fa-list-ol"></i> Up Next</h2>
+            <button class="btn-clear-queue" id="btnClearQueue">
+                <i class="fa-solid fa-trash"></i> Clear
+            </button>
+        </div>
+        <div class="queue-list" id="queueList">
+            <div class="queue-empty">
+                <i class="fa-solid fa-music"></i>
+                <p>Queue is empty</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Audio Visualizer -->
+    <div class="audio-visualizer" id="audioVisualizer" style="display: none;">
+        <!-- Visualizer bars will be dynamically generated -->
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Keyboard Shortcuts Hint -->
+    <div class="shortcut-hint" id="shortcutHint" style="display: none;">
+        <h3><i class="fa-solid fa-keyboard"></i> Shortcuts</h3>
+        <div class="shortcut-item">
+            <span class="shortcut-action">Play/Pause</span>
+            <span class="shortcut-key">Space</span>
+        </div>
+        <div class="shortcut-item">
+            <span class="shortcut-action">Next Song</span>
+            <span class="shortcut-key">→</span>
+        </div>
+        <div class="shortcut-item">
+            <span class="shortcut-action">Previous Song</span>
+            <span class="shortcut-key">←</span>
+        </div>
+        <div class="shortcut-item">
+            <span class="shortcut-action">Search</span>
+            <span class="shortcut-key">Ctrl+F</span>
+        </div>
+        <div class="shortcut-item">
+            <span class="shortcut-action">Toggle Queue</span>
+            <span class="shortcut-key">Q</span>
+        </div>
+        <div class="shortcut-item">
+            <span class="shortcut-action">Hide Shortcuts</span>
+            <span class="shortcut-key">?</span>
+        </div>
+    </div>
+
+    <script src="https://kit.fontawesome.com/bd594d9852.js" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>

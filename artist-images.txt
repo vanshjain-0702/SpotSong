@@ -1,0 +1,65 @@
+SPOTSONG ARTIST PROFILE IMAGES
+================================
+
+All images are hosted on Imgur for reliability. Each artist has a fallback to 'haseen cover.jpg' if the image fails to load.
+
+ARTIST IMAGE URLS:
+
+1. Arijit Singh
+   https://i.imgur.com/wVZ8rkO.jpg
+
+2. Adele
+   https://i.imgur.com/gp0XqSN.jpg
+
+3. Shreya Ghoshal
+   https://i.imgur.com/WvKxPzL.jpg
+
+4. Ed Sheeran
+   https://i.imgur.com/gHVZKqH.jpg
+
+5. A.R. Rahman
+   https://i.imgur.com/XKn6oPE.jpg
+
+6. The Weeknd
+   https://i.imgur.com/1V9qYXO.jpg
+
+7. Badshah
+   https://i.imgur.com/K0yLGqV.jpg
+
+8. Dua Lipa
+   https://i.imgur.com/j7Mq3KN.jpg
+
+9. Neha Kakkar
+   https://i.imgur.com/YNdPzEV.jpg
+
+10. Taylor Swift
+    https://i.imgur.com/ZL7mRUf.jpg
+
+11. Atif Aslam
+    https://i.imgur.com/qZKxR5M.jpg
+
+12. Ariana Grande
+    https://i.imgur.com/cFJQ8Nl.jpg
+
+13. Sonu Nigam
+    https://i.imgur.com/3Lj6Y8M.jpg
+
+14. Bruno Mars
+    https://i.imgur.com/qp8VK7O.jpg
+
+15. Diljit Dosanjh
+    https://i.imgur.com/9r7NxQE.jpg
+
+16. Billie Eilish
+    https://i.imgur.com/Qn7Lm2B.jpg
+
+================================
+HOW IT WORKS:
+
+1. Images are displayed in the artist sidebar (50x50px circular)
+2. When you search for an artist name, their full profile appears
+3. Profile shows large circular image (150x150px) with all their songs
+4. All songs link to YouTube with thumbnails extracted from video IDs
+5. Click any song to see cover view with "Play on YouTube" button
+
+Images are sourced from official social media (Instagram/Twitter) and hosted on Imgur for fast, reliable loading.
